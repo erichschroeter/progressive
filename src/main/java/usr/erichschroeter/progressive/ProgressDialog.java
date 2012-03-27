@@ -8,13 +8,11 @@ import java.awt.GridBagLayout;
 import java.awt.HeadlessException;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.ResourceBundle;
 
 import javax.swing.AbstractAction;
 import javax.swing.JButton;
 import javax.swing.JDialog;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JProgressBar;
@@ -22,8 +20,6 @@ import javax.swing.JScrollPane;
 import javax.swing.JSeparator;
 import javax.swing.JTextArea;
 import javax.swing.SwingUtilities;
-import javax.swing.Timer;
-import javax.swing.UIManager;
 
 import org.jdesktop.swingx.JXCollapsiblePane;
 
@@ -53,75 +49,6 @@ import org.jdesktop.swingx.JXCollapsiblePane;
  */
 @SuppressWarnings("serial")
 public class ProgressDialog extends JDialog implements ProgressListener {
-
-	static int count;
-
-	public static void main(String[] args) {
-
-		SwingUtilities.invokeLater(new Runnable() {
-
-			@Override
-			public void run() {
-				try {
-					UIManager.setLookAndFeel(UIManager
-							.getSystemLookAndFeelClassName());
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-				JFrame frame = new JFrame();
-				CancelHandler handler = new CancelHandler() {
-
-					@Override
-					public void canceled() {
-						System.exit(0);
-					}
-				};
-				// final DeterminateProgressMonitor determinate = ProgressUtil
-				// .createModalDeterminateProgressMonitor(frame,
-				// "Determinate Dialog", 0, 20, 0, 0, handler);
-				// determinate.start("Determinate started");
-				// Timer task1 = new Timer(300, new ActionListener() {
-				//
-				// @Override
-				// public void actionPerformed(ActionEvent e) {
-				// if (determinate.getCurrent() != determinate.getMax()) {
-				// try {
-				// int val = determinate.getCurrent() + 1;
-				// determinate.setCurrent(val, "progress: " + val);
-				// } catch (IllegalStateException e1) {
-				// determinate.start();
-				// }
-				// } else {
-				// // System.exit(0);
-				// determinate.updateStatusText("Completed");
-				// }
-				// }
-				// });
-				// task1.setRepeats(true);
-				// task1.start();
-
-				final IndeterminateProgressMonitor indeterminate = ProgressUtil
-						.createModalIndeterminateProgressMonitor(frame,
-								"Indeterminate Dialog", 0, handler);
-				indeterminate.start("Indeterminate started");
-				Timer task2 = new Timer(300, new ActionListener() {
-
-					@Override
-					public void actionPerformed(ActionEvent e) {
-						// indeterminate.updateStatusText("running");
-						count++;
-						if (count == 5) {
-							indeterminate.setCompleted(true);
-						}
-					}
-				});
-				task2.setRepeats(true);
-				task2.start();
-
-			}
-		});
-
-	}
 
 	public static final ResourceBundle i18ln = ResourceBundle
 			.getBundle("usr.erichschroeter.progressive.i18ln.ProgressDialog");

@@ -1,9 +1,9 @@
 package usr.erichschroeter.progressive;
 
 /**
- * Fired when the status of a {@link AbstractProgressMonitor} changes. The event
- * provides the value boundaries as well as the current value, along with an
- * optional status text.
+ * Fired when the status of a {@link DeterminateProgressMonitor} changes. The
+ * event provides the value boundaries as well as the current value which
+ * <em>determine</em> when the progress is completed.
  * 
  * @author Erich Schroeter
  */
