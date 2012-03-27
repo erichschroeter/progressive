@@ -50,7 +50,7 @@ import org.jdesktop.swingx.JXCollapsiblePane;
 @SuppressWarnings("serial")
 public class ProgressDialog extends JDialog implements ProgressListener {
 
-	public static final ResourceBundle i18ln = ResourceBundle
+	protected static final ResourceBundle i18ln = ResourceBundle
 			.getBundle("usr.erichschroeter.progressive.i18ln.ProgressDialog");
 
 	/** A label displaying the latest status text. */

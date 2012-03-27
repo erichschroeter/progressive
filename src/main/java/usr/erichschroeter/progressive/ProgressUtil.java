@@ -21,9 +21,10 @@ import javax.swing.Timer;
  */
 public class ProgressUtil {
 
-	public static final ResourceBundle i18ln = ResourceBundle
+	protected static final ResourceBundle i18ln = ResourceBundle
 			.getBundle("usr.erichschroeter.progressive.i18ln.ProgressDialog");
 
+	/** Custom progress listener to handle displaying a dialog. */
 	static class MonitorListener implements ProgressListener, ActionListener {
 
 		AbstractProgressMonitor monitor;
