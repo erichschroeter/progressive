@@ -175,6 +175,8 @@ public class ProgressDialog extends JDialog implements ProgressListener {
 
 	private void init(AbstractProgressMonitor monitor) {
 		this.monitor = monitor;
+		this.autoCloseOnCancel = true;
+		this.autoCloseOnComplete = true;
 
 		if (monitor instanceof DeterminateProgressMonitor) {
 			DeterminateProgressMonitor dMonitor = (DeterminateProgressMonitor) monitor;

@@ -128,7 +128,8 @@ public class ProgressUtil {
 		DeterminateProgressMonitor monitor = new DeterminateProgressMonitor(
 				min, max, current, milliSecondsToWait);
 		Window window = owner instanceof Window ? (Window) owner
-				: SwingUtilities.getWindowAncestor(owner);
+				: (owner != null ? SwingUtilities.getWindowAncestor(owner)
+						: null);
 		monitor.addProgressListener(new MonitorListener(window, title, monitor,
 				cancelDelegate));
 		return monitor;
@@ -157,7 +158,8 @@ public class ProgressUtil {
 		IndeterminateProgressMonitor monitor = new IndeterminateProgressMonitor(
 				milliSecondsToWait);
 		Window window = owner instanceof Window ? (Window) owner
-				: SwingUtilities.getWindowAncestor(owner);
+				: (owner != null ? SwingUtilities.getWindowAncestor(owner)
+						: null);
 		monitor.addProgressListener(new MonitorListener(window, title, monitor,
 				cancelDelegate));
 		return monitor;
