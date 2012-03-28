@@ -1,16 +1,6 @@
-buildscript {
-	repositories {
-		maven { url 'http://repo.jfrog.org/artifactory/gradle-plugins'  }
-	}
-	dependencies {
-		classpath group: 'org.jfrog.buildinfo', name: 'build-info-extractor-gradle', version: '2.0.12'
-	}
-}
-
 apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'maven'
-apply plugin: 'artifactory'
 
 group = 'usr.erichschroeter'
 version = '0.0.1'
@@ -42,19 +32,6 @@ artifacts {
 	archives javadocJar
 }
 
-artifactory {
-	contextUrl = 'http://localhost:8081/artifactory'
-	publish {
-		repository {
-			repoKey = 'ext-release-local'
-			// artifactoryUsername is stored in your gradle.properties
-			username = artifactoryUsername
-			// artifactoryPassword is stored in your gradle.properties
-			password = artifactoryPassword
-		}
-	}
-}
-
 uploadArchives {
 	repositories.mavenDeployer {
 		pom.project {
@@ -68,8 +45,8 @@ uploadArchives {
 					}
 				}
 				scm {
-					connection 'git://github.com/erichschroeter/applib.git'
-					url 'git://github.com/erichschroeter/applib.git'
+					connection 'git://github.com/erichschroeter/progressive.git'
+					url 'git://github.com/erichschroeter/progressive.git'
 				}
 			}
 		}
